@@ -1,6 +1,7 @@
 # Virtual_keyboard  
 
-https://github.com/Miarur/Virtual_keyboard/  
+http://miarur.github.io/Virtual_keyboard/index.html  
+
 
 
 
