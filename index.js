@@ -134,6 +134,7 @@ class KeyControls {
     this.out = ''; 
     this.textContent = this.textContent;
     this.keycodes = this.keycodes;
+    this.textarea = document.querySelector('#textarea');
     
     addEventListener('keydown', (e) => this.changeState(e));
     addEventListener('keyup', (e) => this.changeState(e));
@@ -230,37 +231,49 @@ class KeyControls {
         btn += btn.classList.add('clearfix');
       }
     }
+
+    // перенести сюда связку с textarea 
+    
   }
 
   keyboardInitHover() {
    let keyboard_items = this.keylist;
+   let textarea = document.querySelector('#textarea');
+
     document.addEventListener('keydown', function(event) {
       for(let i = 0; i < keyboard_items.length; i++) {
         if(keyboard_items[i] === event.code && event.type === 'keydown') {
+          textarea.value += event.key; // печатаем в textarea 
           document.querySelectorAll('#keyboard .k-key').forEach(function(element) {
             element.classList.remove('active');
           })
+
           document.querySelector(`#keyboard .k-key.${event.code}`).classList.add('active');
         } 
-       
       }
+
     })
   }
 
   MouseInitHover() {
     let keyboard_items = this.keylist;
+    let textarea = document.querySelector('#textarea');
+    console.log(textarea);
     document.addEventListener('click', function(event) {
       document.querySelectorAll('#keyboard .k-key').forEach(function(element) {
         element.classList.remove('active');
       })
-
       if(event.target.classList.contains('k-key')) {
         event.target.classList.add('active');
       }
-      console.log(event);
-    })
 
+       // печатаем в textarea 
+      if(event.target.classList.contains('k-key')) {
+        textarea.value += event.target.innerHTML;
+      }
+    })
   }
+
 }
 createBody();
 
@@ -268,6 +281,7 @@ let x = new KeyControls();
 x.init();  
 x.keyboardInitHover();  
 x.MouseInitHover();
+// x.textareaInit();
 
 
 // document.addEventListener('keydown', (e) => console.log(e));
