@@ -9,6 +9,10 @@ html {
   font-weight: 700;
 }
 
+body {
+  background-color: rgb(207, 205, 205);
+}
+
 
 .keyboard {
   margin: 0px;
@@ -31,6 +35,18 @@ html {
 
 .textarea {
   padding-top: 60px;
+}
+
+#textarea {
+  border-radius: 5px;
+  outline: none;
+  -moz-appearance: none;
+	border: 1px solid #999; 
+  resize: none;
+  border: 2px solid rgb(112, 210, 249);
+  -webkit-box-shadow: 7px 19px 51px 0px rgba(152, 223, 66, 0.21);
+  -moz-box-shadow: 7px 19px 51px 0px rgba(0, 0, 0, 0.21);
+  box-shadow: 7px 19px 51px 0px rgba(6, 191, 243, 0.21);
 }
 
 .keyboard__container {
