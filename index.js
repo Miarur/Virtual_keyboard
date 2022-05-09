@@ -32,7 +32,6 @@ function createBody() {
   TEXTAREA.id ="textarea"; 
   TEXTAREA.cols="90";
   TEXTAREA.rows="15";
-  // TEXTAREA.autofocus;
   
 
   let KEYBOARD_CONTAINER = document.createElement('div');
@@ -281,7 +280,8 @@ class KeyControls {
             document.querySelectorAll('#keyboard .k-key').forEach(function(element) {
               element.classList.remove('active');
             })
-          } else {
+
+          } else if (board.classList.contains('ru')) {
             textarea.value += keycodes[i].keyru; // печатаем в textarea 
             document.querySelectorAll('#keyboard .k-key').forEach(function(element) {
               element.classList.remove('active');
@@ -312,9 +312,9 @@ class KeyControls {
     })
   }
 
+
   changeLanguageRu() {
     let keylist = this.keylist;
-    let flag = false; 
     let keycodes = this.keycodes;
     let board =  document.querySelector('#keyboard');
     let btn = document.querySelectorAll('#keyboard .k-key');
@@ -341,7 +341,6 @@ class KeyControls {
 
   changeLanguageEn() {
     let keylist = this.keylist;
-    let flag = false; 
     let keycodes = this.keycodes;
     let board =  document.querySelector('#keyboard');
     let btn = document.querySelectorAll('#keyboard .k-key');
@@ -368,11 +367,39 @@ class KeyControls {
   }
 
 
-  backspaceInit() {
-    let backspace = document.querySelector('.k-key.Backspace');
-    console.log(backspace);
-    backspace.addEventListener('keydown', function(event) {
-      console.log(event);
+  // backspaceInit() {
+  //   let backspace = document.querySelector('.k-key.Backspace');
+  //   let textarea = document.querySelector('#textarea');
+  //   console.log(backspace);
+  //   document.addEventListener('keydown', function(event) {
+  //     if(event.code === 'Backspace') {
+  //       this.start = this.textarea.selectionStart; 
+  //     }
+      
+  //   })
+  // }
+
+  capsLockInit() {
+    let textarea = document.querySelector('#textarea');
+    let keylist = this.keylist;
+    let keycodes = this.keycodes;
+    let board =  document.querySelector('#keyboard');
+    let btn = document.querySelectorAll('#keyboard .k-key');
+
+    document.addEventListener('keydown', function(event) {
+      if(event.code === 'CapsLock') {
+        console.log(event);
+        if(board.classList.contains('en')) {
+          board.classList.toggle('CAPS'); 
+          for(let i = 0; i < btn.length; i++) {
+            btn[i].textContent = keycodes[i].keyEn;
+          }
+           textarea.value += keycodes.keyEn;
+          
+
+          // document.querySelector(`#keyboard .k-key.${event.code}`).classList.add('active');
+        }
+      }
     })
   }
 
@@ -389,7 +416,8 @@ x.keyboardInitHover();
 x.MouseInitHover();
 x.changeLanguageRu();
 x.changeLanguageEn();
-x.backspaceInit();
+// x.backspaceInit();
+x.capsLockInit();
 
 
 
