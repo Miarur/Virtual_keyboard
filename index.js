@@ -208,7 +208,6 @@ class KeyControls {
   changeState(e) {
     if(!this.keylist.includes(e.code)) return; 
     this.keys[e.code] = e.type === 'keydown' ? true : false; 
-    console.log(this.keys);
     if(this.keys[e.code] = e.type === 'keyup') {
       document.querySelector(`#keyboard .k-key.${e.code}`).classList.remove('active');
     }
@@ -290,6 +289,7 @@ class KeyControls {
           document.querySelector(`#keyboard .k-key.${event.code}`).classList.add('active');
         } 
       }
+      
     })
   }
 
@@ -309,6 +309,14 @@ class KeyControls {
       if(event.target.classList.contains('k-key')) {
         textarea.value += event.target.innerHTML;
       }
+      if(event.target.classList.contains('Backspace')) {
+        console.log(textarea.value);
+        let arr = textarea.value.slice(0, textarea.value.length - 10);
+        textarea.value = arr; 
+        console.log(arr);
+      }
+
+
     })
   }
 
@@ -367,41 +375,43 @@ class KeyControls {
   }
 
 
-  // backspaceInit() {
-  //   let backspace = document.querySelector('.k-key.Backspace');
-  //   let textarea = document.querySelector('#textarea');
-  //   console.log(backspace);
-  //   document.addEventListener('keydown', function(event) {
-  //     if(event.code === 'Backspace') {
-  //       this.start = this.textarea.selectionStart; 
-  //     }
-      
-  //   })
-  // }
-
-  capsLockInit() {
+  backspaceInit() {
+    let backspace = document.querySelector('.k-key.Backspace');
     let textarea = document.querySelector('#textarea');
-    let keylist = this.keylist;
-    let keycodes = this.keycodes;
-    let board =  document.querySelector('#keyboard');
-    let btn = document.querySelectorAll('#keyboard .k-key');
-
+    console.log(backspace);
     document.addEventListener('keydown', function(event) {
-      if(event.code === 'CapsLock') {
-        console.log(event);
-        if(board.classList.contains('en')) {
-          board.classList.toggle('CAPS'); 
-          for(let i = 0; i < btn.length; i++) {
-            btn[i].textContent = keycodes[i].keyEn;
-          }
-           textarea.value += keycodes.keyEn;
-          
-
-          // document.querySelector(`#keyboard .k-key.${event.code}`).classList.add('active');
-        }
+      if(event.target.classList.contains('Backspace')) {
+        console.log(event.target);
+        console.log(textarea.value);
+        let arr = textarea.value.slice(0, textarea.value.length - 10);
+        textarea.value = arr; 
+        console.log(arr);
       }
+      
     })
   }
+
+  // capsLockInit() {
+  //   let textarea = document.querySelector('#textarea');
+  //   let keylist = this.keylist;
+  //   let keycodes = this.keycodes;
+  //   let board =  document.querySelector('#keyboard');
+  //   let btn = document.querySelectorAll('#keyboard .k-key');
+
+  //   document.addEventListener('keydown', function(event) {
+  //     if(event.code === 'CapsLock') {
+  //       console.log(event);
+  //       if(board.classList.contains('en')) {
+  //         board.classList.toggle('CAPS'); 
+  //       }
+  //       for(let i = 0; i < btn.length; i++) {
+  //         btn[i].textContent = keycodes[i].keyEn;
+  //       }
+  //        textarea.value += keycodes.keyEn;
+  //     }
+  //   })
+  // }
+        
 
 
 
@@ -416,8 +426,8 @@ x.keyboardInitHover();
 x.MouseInitHover();
 x.changeLanguageRu();
 x.changeLanguageEn();
-// x.backspaceInit();
-x.capsLockInit();
+x.backspaceInit();
+// x.capsLockInit();
 
 
 
