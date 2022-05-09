@@ -4,6 +4,11 @@
   box-sizing: border-box;
 }
 
+html {
+  font-family: 'Roboto';
+  font-weight: 700;
+}
+
 
 .keyboard {
   margin: 0px;
@@ -30,30 +35,43 @@
 
 .keyboard__container {
   margin-top: 10px;
-  padding: 0px;
+  padding: 10px;
   display: block;
-  width: 850px;
+  width: 870px;
   background-color: rgb(83, 83, 83);
+  border-radius: 15px;
+  -webkit-box-shadow: 7px 19px 31px 0px rgba(0, 0, 0, 0.21);
+  -moz-box-shadow: 7px 19px 31px 0px rgba(0, 0, 0, 0.21);
+  box-shadow: 7px 19px 31px 0px rgba(0, 0, 0, 0.21);
+  
 }
 
 .k-key {
   float: left;
-  padding: 4px;
+  padding: 12px 4px 4px 4px;
   margin: 3px;
   width: 50px;
   height: 50px;
   text-align: center;
-  line-height: 32px;
-  background-color: rgb(45, 143, 143);
+  line-height: 20px;
+  background-color: rgb(225, 255, 255);
   border-radius: 10px;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 500;
   transition: all 0.1s ease-in-out;
+  -webkit-box-shadow: -5px -7px 100px 9px rgba(219, 219, 219, 0.21);
+  -moz-box-shadow: -5px -7px 100px 9px rgba(219, 219, 219, 0.21);
+  box-shadow: -5px -7px 100px 9px rgba(219, 219, 219, 0.21);
+  
 }
 
 .active {
-  background-color: rgb(72, 255, 255);
-  border-radius: 15px;
+  background-color: rgb(15, 255, 255);
+  border-radius: 10px;
+  -webkit-box-shadow: -5px -7px 100px 9px rgba(255, 255, 255, 0.21) inset;
+  -moz-box-shadow: -5px -7px 100px 9px rgba(255, 255, 255, 0.21) inset;
+  box-shadow: -5px -7px 100px 9px rgba(255, 255, 255, 0.21) inset;
+
 }
 .clearfix {
   display: block;
@@ -66,7 +84,7 @@
 }
 
 .Tab {
-  width: auto; 
+  width: 75px; 
 }
 
 .CapsLock {
@@ -74,11 +92,11 @@
 }
 
 .Enter {
-  width: auto; 
+  width: 120px; 
 }
 
 .ShiftLeft {
-  width: auto; 
+  width: 100px; 
 }
 
 .ControlLeft {
@@ -90,7 +108,7 @@
 }
 
 .AltLeft {
-  width: auto;
+  width: 60px; 
 }
 
 .Space {
@@ -98,7 +116,7 @@
 }
 
 .ShiftRight {
-  width: auto;
+  width: 100px; 
 }
 
 .ControlLeft {
